@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Enhanced Form Demo</title>
+  <style>
+    :root{
+      --bg:#0b0f13;
+      --surface:#121821;
+      --muted:#8aa0b6;
+      --text:#e9f0f7;
+      --accent:#4cc9f0;
+      --accent-2:#b8f398;
+      --danger:#ff6b6b;
+      --border:#223041;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial;
+      color:var(--text);
+      background:linear-gradient(180deg,var(--bg),#0e141b 30%, #0b0f13);
+    }
+    a{color:var(--accent)}
+    header,footer{background:var(--surface);border-bottom:1px solid var(--border)}
+    header{position:sticky;top:0;z-index:2}
+    .wrap{max-width:1100px;margin-inline:auto;padding:1rem}
+    nav ul{display:flex;gap:.75rem;list-style:none;padding:0;margin:.25rem 0 0}
+    nav a{display:inline-block;padding:.4rem .7rem;border:1px solid var(--border);border-radius:999px;text-decoration:none}
+    nav a:focus, nav a:hover{outline:2px solid var(--accent);outline-offset:2px}
+    main{display:grid;grid-template-columns:1fr 320px;gap:1.2rem;padding:1rem}
+    @media (max-width: 900px){ main{grid-template-columns:1fr} }
+    section,aside,article{
+      background:rgba(255,255,255,0.02);
+      border:1px solid var(--border);
+      border-radius:14px;
+      padding:1rem;
+      backdrop-filter:saturate(140%) blur(4px);
+    }
+    h1,h2,h3{line-height:1.25;margin-top:.2rem}
+    .kicker{color:var(--accent-2);font-weight:600;font-size:.9rem;letter-spacing:.1em;text-transform:uppercase}
+    .lead{color:var(--muted);margin-top:.2rem}
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+    @media (max-width: 700px){ .grid-2,.grid-3{grid-template-columns:1fr} }
+    form{display:grid;gap:1rem}
+    fieldset{border:1px dashed var(--border);border-radius:12px;padding:1rem}
+    legend{padding:0 .5rem;color:var(--accent);font-weight:700}
+    label{display:block;font-weight:600;margin-bottom:.35rem}
+    .hint{color:var(--muted);font-size:.9rem}
+    input,select,textarea{
+      width:100%;
+      padding:.7rem .8rem;
+      border:1px solid var(--border);
+      border-radius:10px;
+      background:#0c1219;
+      color:var(--text);
+    }
+    input:focus,select:focus,textarea:focus{outline:2px solid var(--accent);outline-offset:2px}
+    .row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+    .actions{display:flex;gap:.8rem;flex-wrap:wrap}
+    .btn{
+      appearance:none;border:1px solid var(--border);
+      background:linear-gradient(180deg,#1a2230,#141b26);
+      color:var(--text);padding:.8rem 1rem;border-radius:12px;cursor:pointer;font-weight:700
+    }
+    .btn.primary{background:linear-gradient(180deg,var(--accent),#2aa9d0);color:#05151b;border-color:#0b3341}
+    .btn.secondary{background:linear-gradient(180deg,#1a2a17,#12200f);border-color:#2e4b20;color:#dbffd0}
+    .btn:focus{outline:2px solid var(--accent);outline-offset:2px}
+    table{width:100%;border-collapse:collapse;margin-top:.5rem;font-size:.95rem}
+    th,td{border:1px solid var(--border);padding:.6rem .7rem;text-align:left}
+    th{background:#0f1722}
+    caption{caption-side:top;text-align:left;font-weight:700;margin-bottom:.4rem}
+    figure{margin:0}
+    figcaption{color:var(--muted);font-size:.9rem;margin-top:.4rem}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    .required::after{content:" *";color:var(--danger)}
+    .badge{display:inline-block;padding:.15rem .5rem;border:1px solid var(--border);border-radius:999px;font-size:.8rem;color:var(--muted)}
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header role="banner">
+    <div class="wrap">
+      <p class="kicker">Accessible HTML5 Demo</p>
+      <h1 id="page-title">Enhanced Form & Structured Content</h1>
+      <p class="lead">This single file demonstrates semantic layout, rich content elements, and a fully validated HTML5 form with best-practice accessibility.</p>
+      <nav aria-label="Primary">
+        <ul>
+          <li><a href="#overview">Overview</a></li>
+          <li><a href="#media">Media</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#form">Registration Form</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main role="main" class="wrap">
+    <!-- OVERVIEW -->
+    <article id="overview" aria-labelledby="overview-h">
+      <h2 id="overview-h">Overview</h2>
+      <p>Below are examples of well-structured content using lists and tables, followed by an accessible, validated form. Everything is organized with semantic tags for screen readers and keyboard users.</p>
+      <!-- Highlights -->
+      <div class="grid-3" aria-label="Highlights">
+        <section>
+          <h3>What you’ll see</h3>
+          <ul>
+            <li>Semantic landmarks</li>
+            <li>Accessible labels and descriptions</li>
+            <li>HTML5 validation across inputs</li>
+          </ul>
+        </section>
+        <section>
+          <h3>Deliverables</h3>
+          <ol>
+            <li>Single HTML file</li>
+            <li>Form with diverse inputs</li>
+            <li>Tables, lists, and media</li>
+          </ol>
+        </section>
+        <section>
+          <h3>Tech details</h3>
+          <dl>
+            <dt>Autocomplete</dt><dd>Enabled</dd>
+            <dt>Validation</dt><dd>Patterns, ranges</dd>
+            <dt>Readonly</dt><dd>Immutable fields</dd>
+          </dl>
+        </section>
+      </div>
+    </article>
+
+    <!-- MEDIA -->
+    <aside aria-labelledby="media">
+      <h2 id="media">Media</h2>
+      <figure>
+        <img src="https://images.unsplash.com/photo-1520975922284-9bcd70a3d884?q=80&w=1200&auto=format&fit=crop" alt="Abstract geometric shapes" width="100%">
+        <figcaption>Accessible image with descriptive alt text.</figcaption>
+      </figure>
+    </aside>
+
+    <!-- PRICING TABLE -->
+    <article id="pricing">
+      <h2>Pricing Table</h2>
+      <table>
+        <caption>Registration Packages</caption>
+        <thead>
+          <tr><th>Tier</th><th>Includes</th><th>Price</th></tr>
+        </thead>
+        <tbody>
+          <tr><th>Basic</th><td>Access to sessions</td><td>$49</td></tr>
+          <tr><th>Pro</th><td>Basic + workshop kit</td><td>$99</td></tr>
+          <tr><th>Team</th><td>Pro for 5 people</td><td>$399</td></tr>
+        </tbody>
+      </table>
+    </article>
+
+    <!-- FORM -->
+    <article id="form">
+      <h2>Event Registration Form</h2>
+      <form action="#" method="post" autocomplete="on">
+        <fieldset>
+          <legend>Identity</legend>
+          <label for="fname" class="required">First name</label>
+          <input id="fname" name="given-name" type="text" placeholder="Jane" required autocomplete="given-name">
+          <label for="lname" class="required">Last name</label>
+          <input id="lname" name="family-name" type="text" placeholder="Doe" required autocomplete="family-name">
+          <label for="email" class="required">Email</label>
+          <input id="email" name="email" type="email" placeholder="jane@example.com" required autocomplete="email">
+        </fieldset>
+        <fieldset>
+          <legend>Preferences</legend>
+          <label for="color">Favorite color</label>
+          <input id="color" name="color" type="color">
+        </fieldset>
+        <div class="actions">
+          <button class="btn primary" type="submit">Submit</button>
+          <button class="btn" type="reset">Reset</button>
+        </div>
+      </form>
+    </article>
+  </main>
+
+  <!-- FOOTER -->
+  <footer role="contentinfo">
+    <div class="wrap">
+      <p>&copy; 2025 Enhanced Form Demo</p>
+    </div>
+  </footer>
+</body>
+</html>
